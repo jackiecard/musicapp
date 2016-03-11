@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Music.Models.Genre>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Genre</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.Name, "../Albums/ShowSomeAlbums/",  new { id = item.GenreID }) 
+        </td>
+    </tr>
+}
+
+</table>

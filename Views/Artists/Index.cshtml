@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Music.Models.Artist>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Artists</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            <div class="btn-group" role="group" aria-label="">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ArtistID }, new { @class = "btn btn-defaul" }) 
+                @Html.ActionLink("Details", "Details", new { id = item.ArtistID }, new { @class = "btn btn-defaul" }) 
+                @Html.ActionLink("Delete", "Delete", new { id = item.ArtistID }, new { @class = "btn btn-defaul" })
+            </div>
+</td>
+    </tr>
+}
+
+</table>
