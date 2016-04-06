@@ -135,17 +135,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603031811508_InitialCreate.cs" />
-    <Compile Include="Migrations\201603031811508_InitialCreate.Designer.cs">
-      <DependentUpon>201603031811508_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603031845212_TitleRequired.cs" />
-    <Compile Include="Migrations\201603031845212_TitleRequired.Designer.cs">
-      <DependentUpon>201603031845212_TitleRequired.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603110058096_music.cs" />
-    <Compile Include="Migrations\201603110058096_music.Designer.cs">
-      <DependentUpon>201603110058096_music.cs</DependentUpon>
+    <Compile Include="Migrations\201604060019020_genre1.cs" />
+    <Compile Include="Migrations\201604060019020_genre1.Designer.cs">
+      <DependentUpon>201604060019020_genre1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
@@ -222,14 +214,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603031811508_InitialCreate.resx">
-      <DependentUpon>201603031811508_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603031845212_TitleRequired.resx">
-      <DependentUpon>201603031845212_TitleRequired.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603110058096_music.resx">
-      <DependentUpon>201603110058096_music.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604060019020_genre1.resx">
+      <DependentUpon>201604060019020_genre1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

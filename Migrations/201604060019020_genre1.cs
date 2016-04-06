@@ -3,7 +3,7 @@ namespace Music.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class genre1 : DbMigration
     {
         public override void Up()
         {
@@ -12,7 +12,7 @@ namespace Music.Migrations
                 c => new
                     {
                         AlbumID = c.Int(nullable: false, identity: true),
-                        Title = c.String(),
+                        Title = c.String(nullable: false),
                         GenreID = c.Int(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         ArtistID = c.Int(nullable: false),
@@ -29,6 +29,7 @@ namespace Music.Migrations
                     {
                         ArtistID = c.Int(nullable: false, identity: true),
                         Name = c.String(),
+                        Bio = c.String(),
                     })
                 .PrimaryKey(t => t.ArtistID);
             
@@ -37,9 +38,10 @@ namespace Music.Migrations
                 c => new
                     {
                         GenreID = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
+                        Name = c.String(maxLength: 20),
                     })
-                .PrimaryKey(t => t.GenreID);
+                .PrimaryKey(t => t.GenreID)
+                .Index(t => t.Name, unique: true);
             
         }
         
@@ -47,6 +49,7 @@ namespace Music.Migrations
         {
             DropForeignKey("dbo.Albums", "GenreID", "dbo.Genres");
             DropForeignKey("dbo.Albums", "ArtistID", "dbo.Artists");
+            DropIndex("dbo.Genres", new[] { "Name" });
             DropIndex("dbo.Albums", new[] { "ArtistID" });
             DropIndex("dbo.Albums", new[] { "GenreID" });
             DropTable("dbo.Genres");

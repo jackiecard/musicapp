@@ -1,6 +1,5 @@
 namespace Music.Migrations
 {
-    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -11,7 +10,6 @@ namespace Music.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Music.Models.MusicContext";
         }
 
         protected override void Seed(Music.Models.MusicContext context)
@@ -27,17 +25,7 @@ namespace Music.Migrations
             //      new Person { FullName = "Brice Lambson" },
             //      new Person { FullName = "Rowan Miller" }
             //    );
-            context.Genres.AddOrUpdate(
-                g => g.Name,
-                new Genre { Name = "Disco" },
-                new Genre { Name = "Classical" },
-                new Genre { Name = "Pop" }
-                );
-
-            context.Artists.AddOrUpdate(
-                a => a.Name,
-                new Artist { Name = "Bee Gees" }
-                );
+            //
         }
     }
 }

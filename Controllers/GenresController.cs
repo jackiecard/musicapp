@@ -50,9 +50,11 @@ namespace Music.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Genres.Add(genre);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                
+                    db.Genres.Add(genre);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                
             }
 
             return View(genre);

@@ -14,10 +14,22 @@ namespace Music.Controllers
     {
         private MusicContext db = new MusicContext();
 
+        public ActionResult WebGrid()
+        {
+            var data = db.Albums.Include(a => a.Artist).Include(a => a.Genre).ToList();
+            return View(data);
+        }
+
         // GET: Albums
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                albums = albums.Where(s => s.Title.Contains(searchString));
+            } 
+
             return View(albums.ToList());
         }
 
@@ -38,8 +50,7 @@ namespace Music.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             try {
-                Album album = db.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.AlbumID == id).Single();
-            
+                Album album = db.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.AlbumID == id).Single();           
                 if (album == null)
             {
                 return HttpNotFound();
@@ -51,6 +62,25 @@ namespace Music.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        // GET: Albums/Details/5
+        /*public ActionResult Like(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+                Album album = db.Albums.Find(id);
+                if (album == null)
+                {
+                    return HttpNotFound();
+                }
+                album.Likes++;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            
+        }*/
+
 
         // GET: Albums/Create
         public ActionResult Create()
